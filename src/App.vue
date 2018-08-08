@@ -1,17 +1,32 @@
 <template>
+
   <div>
-    <a-table :dataSource="dataSource" :columns="columns">
-      <template #bodyCell="{ column, record }">
-        <template v-if="['Source', 'Marker', 'Treatment', 'Condition'].includes(column.key)">
-            <a-tag
-              v-for="tag in record[column.key]"
-              :key="tag"
-            >
-            {{ tag }}
-          </a-tag>
-        </template>
-      </template>
-    </a-table>
+   
+     <!-- header menu -->
+     <div>
+      <a-menu
+        mode="horizontal"
+        v-model:selectedKeys="selectedKeys"
+        :style="{ lineHeight: '64px' }"
+      >
+        <a-menu-item key="1"><router-link to="/">Home</router-link></a-menu-item>
+        <a-menu-item key="2"><router-link to="/dashboard">Dashboard</router-link></a-menu-item>
+      </a-menu>
+     </div>
+      
+    <!-- content view -->
+
+    <div style="padding-top: 20px">
+      <router-view />
+    </div>    
+   
+
+
+    <!-- footer -->
+    <div style="text-align: center">
+      Ant Design ©2018 Created by Ant UED
+    </div>
+
   </div>
  
   
@@ -19,55 +34,25 @@
 
 
 <script>
+
+
    export default {
     data() {
-      return {
-        dataSource: [
-        ],
-
-        columns: [
-          {
-            title: 'Dataset Id',
-            dataIndex: 'ProjectId',
-            key: 'ProjectId',
-          },
-          {
-            title: 'Title',
-            dataIndex: 'ProjectName',
-            key: 'ProjectName',
-          },
-          {
-            title: 'Source',
-            dataIndex: 'Source',
-            key: 'Source',
-          },
-          {
-            title: 'Marker',
-            dataIndex: 'Marker',
-            key: 'Marker',
-          },
-          {
-            title: 'Condition',
-            dataIndex: 'Condition',
-            key: 'Condition',
-          },
-          {
-            title: 'Treatment',
-            dataIndex: 'Treatment',
-            key: 'Treatment',
-          },
-        ],
-      };
+        return {
+            selectedKeys: ""
+        };
     },
 
-    mounted() {
-      this.axios.get('https://www.frontierseeker.xyz/api/dashboard')
-      .then((response) => {
-        this.dataSource = response['data']['data']
-        console.log(response['data']['data'])
-      })
-    }
-  };
+    // watch: {
+    //   selectedKeys(newValue) {
+    //     this.$route.push
+    //   }
+    // }
+};
 </script>
+
+<style>
+
+</style>
 
 
