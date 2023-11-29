@@ -24,7 +24,7 @@
 
     <!-- footer -->
     <div style="text-align: center">
-      Ant Design ©2018 Created by Ant UED
+      ©2023 Created by Li Lab
     </div>
 
   </div>
