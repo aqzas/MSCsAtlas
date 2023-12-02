@@ -8,6 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@antv/g2": "^5.1.10",
+    "@antv/g2plot": "^2.4.31",
     "ant-design-vue": "^3.2.20",
     "axios": "^1.4.0",
     "vue": "^3.3.4",
@@ -16,6 +18,10 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
+    "autoprefixer": "^10.4.16",
+    "daisyui": "^4.4.14",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
     "vite": "^4.3.9"
   }
 }
