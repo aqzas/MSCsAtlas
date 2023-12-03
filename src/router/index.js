@@ -14,9 +14,24 @@ const router = createRouter({
       component: () => import("../views/DashboardView.vue")
     },
     {
-      path: '/expression/:way',
+      path: '/expression',
       name: 'expression',
       component: () => import("../views/Expression.vue")
+    },
+    {
+      path: '/enrichment',
+      name: 'enrichment',
+      component: () => import("../views/Enrichment.vue")
+    },
+    {
+      path: '/assess',
+      name: 'assess',
+      component: () => import("../views/Assess.vue")
+    },
+    {
+      path: '/playground',
+      name: 'playground',
+      component: () => import("../views/Playground.vue")
     },
   ]
 })

@@ -1,5 +1,36 @@
 <template>
-  <div>
+
+  <div class="container mx-auto"><a-card :hoverable="true">
+
+   
+    <a-form  
+      :label-col="{ span: 2 }"
+      name="basic"
+    >
+      <a-form-item label="Source">
+        <a-select style="width: 200px" v-model:value="sourceSelect" :options="sourceOptions" mode="multiple"></a-select>
+      </a-form-item>
+
+      <a-form-item label="Treatment">
+        <a-select style="width: 200px" v-model:value="treatmentSelect" :options="treatmentOptions" mode="multiple"></a-select>
+      </a-form-item>
+
+      <a-form-item label="Disease">
+        <a-select style="width: 200px" v-model:value="diseaseSelect" :options="diseaseOptions" mode="multiple"></a-select>
+      </a-form-item>
+
+      <a-form-item label="Condition">
+        <a-select style="width: 200px" v-model:value="conditionSelect" :options="conditionOptions" mode="multiple"></a-select>
+      </a-form-item>
+
+      <a-form-item :wrapper-col="{ offset: 2 } ">
+        <a-button type="primary" html-type="submit">Submit</a-button>
+      </a-form-item>
+      
+    </a-form>
+  </a-card> </div>
+
+  <div class="container mx-auto pt-4">
     <a-table
       :dataSource="dataSource" 
       :columns="columns"
@@ -86,6 +117,31 @@
             witdh: 150
           }
         ],
+
+        sourceSelect: [],
+        sourceOptions: [
+          { value: "Bone marrow" },
+          { value: "Placenta" },
+        ],
+
+        treatmentSelect: [],
+        treatmentOptions: [
+          { value: "Gene Knock down"},
+          { value: "Virus Infection"},
+          { value: "3D Culture"}
+        ],
+
+        diseaseSelect: [],
+        diseaseOptions: [
+          { value: "Leukemia" },
+          { value: "Obesity"}
+        ],
+
+        conditionSelect: [],
+        conditionOptions: [
+          { value: 'Adult'}, { value: 'Fetal' }
+        ]
+
       };
     },
 

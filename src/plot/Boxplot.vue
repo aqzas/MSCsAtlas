@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="boxplot"></div>
+        <div id="abcdef"></div>
     </div>
 </template>
 
@@ -12,14 +12,10 @@ export default {
         dat: Array,
         xlabel: String,
         ylabel: String,
-        height: {
-                type: Number,
-                default: 520
-        }
+        itemName: String,
     },
     data() {
         return {
-            chart: null
         }
     },  
     mounted() {
@@ -28,9 +24,7 @@ export default {
     methods: {
         init() {
             this.chart = new this.$Chart({
-                container: 'boxplot',
-                height: this.height,
-                autoFit: true
+                container: 'abcdef',
             })
 
             this.chart
@@ -38,10 +32,29 @@ export default {
                 .data(this.dat)
                 .encode('x', this.xlabel)
                 .encode('y', this.ylabel)
-                .encode('color', 'x')
-                .scale('x', { paddingInner: 0.6, paddingOuter: 0.3 })
+                .encode('color', this.xlabel)
+                .scale('x', { paddingInner: 0.6, paddingOuter: 0.3 }) // box的宽度
                 .scale('y', { zero: true })
                 .style('stroke', 'black')
+                .axis('y', { title: this.itemName })
+                .tooltip(false)
+
+            this.chart.render();
+        },
+
+        reredner() {
+            this.chart.clear()
+
+            this.chart
+                .box()
+                .data(this.dat)
+                .encode('x', this.xlabel)
+                .encode('y', this.ylabel)
+                .encode('color', this.xlabel)
+                .scale('x', { paddingInner: 0.6, paddingOuter: 0.3 }) // box的宽度
+                .scale('y', { zero: true })
+                .style('stroke', 'black')
+                .axis('y', { title: this.itemName })
                 .tooltip(false)
 
             this.chart.render();
@@ -49,15 +62,13 @@ export default {
     },
     watch: {
         dat: function() {
+            this.reredner()
+        },
 
-            this.chart
-                .data(dat)
-                .encode('x', this.xlabel)
-                .encode('y', this.ylabel)
-            
-            this.chart.render()
-
+        itemName: function() {
+            this.reredner()
         }
+
     }
 }
 

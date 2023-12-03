@@ -11,8 +11,10 @@
         <ul class="menu menu-horizontal px-1">
           <li><router-link to="/">Home</router-link></li>
           <li><router-link to="/dashboard">Dashboard</router-link></li>
-          <li><router-link to="/expression/gene">Expression</router-link></li>
-          <li><router-link to="/expression/sets">Enrichment</router-link></li>
+          <li><router-link to="/expression">Expression</router-link></li>
+          <li><router-link to="/enrichment">Enrichment</router-link></li>
+          <!-- <li><router-link to="/playground">Playground</router-link></li> -->
+          <li><router-link to="/assess">Assess</router-link></li>
         </ul>
       </div>
     </div>
