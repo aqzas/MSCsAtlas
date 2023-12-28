@@ -33,6 +33,11 @@ const router = createRouter({
       name: 'playground',
       component: () => import("../views/Playground.vue")
     },
+    {
+      path: '/document',
+      name: 'document',
+      component: () => import("../views/Document.vue")
+    }
   ]
 })
 

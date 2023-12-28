@@ -8,17 +8,15 @@ import './app.css';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
-import 'ant-design-vue/dist/antd.css'; // or 'ant-design-vue/dist/antd.less'
-
-// import { Table, Tag } from 'ant-design-vue';
-import Antd from 'ant-design-vue';
-import {Chart} from '@antv/g2'
+import { Runtime, extend, corelib } from '@antv/g2'
+const Chart = extend(Runtime, corelib());
 
 
 const app = createApp(App)
 
 app.config.globalProperties.$Chart = Chart
+// app.config.globalProperties.$BasePath = "http://bioinfo.life.hust.edu.cn/MSCapi"
+app.config.globalProperties.$BasePath = "https://msc.unioncell.cn/MSCapi"
 app.use(router)
-app.use(Antd)
 app.use(VueAxios, axios)
 app.mount('#app')

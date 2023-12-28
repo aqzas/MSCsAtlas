@@ -1,6 +1,7 @@
 <template>
     <div>
-        <div id="abcdef"></div>
+        <div id="first"></div>
+        <div id="second"></div>
     </div>
 </template>
 
@@ -13,6 +14,7 @@ export default {
         xlabel: String,
         ylabel: String,
         itemName: String,
+        customId: String
     },
     data() {
         return {
@@ -23,8 +25,9 @@ export default {
     },
     methods: {
         init() {
+            let customId = this.customId
             this.chart = new this.$Chart({
-                container: 'abcdef',
+                container: customId,
             })
 
             this.chart
@@ -37,6 +40,7 @@ export default {
                 .scale('y', { zero: true })
                 .style('stroke', 'black')
                 .axis('y', { title: this.itemName })
+                .axis('x', '')
                 .tooltip(false)
 
             this.chart.render();
@@ -55,6 +59,7 @@ export default {
                 .scale('y', { zero: true })
                 .style('stroke', 'black')
                 .axis('y', { title: this.itemName })
+                .axis('x', '')
                 .tooltip(false)
 
             this.chart.render();
